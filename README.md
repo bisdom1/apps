@@ -11,7 +11,7 @@ The example application takes a `*.csv` file with COVID-19 statistics per countr
 
 We turn this code into interactive apps using streamlit, dash and voila.
 
-The code:
+The basic code for loading, processing and plotting the data:
 ```python
 import pandas as pd 
 import plotly.express as px
