@@ -5,7 +5,7 @@ from pathlib import Path
 
 @st.cache
 def readdata():
-    df = pd.read_csv('assets\\owid-covid-data.csv', na_values='nan') # read data in memory
+    df = pd.read_csv('https://raw.githubusercontent.com/bisdom1/apps/master/assets/owid-covid-data.csv', na_values='nan') # read data in memory
     df.date=pd.DatetimeIndex(df.date)
     df.index=df.date
     df['week'] = df.to_period('W').index.strftime("%Y-%m-%d")
