@@ -15,7 +15,8 @@ Python 3.x set-up with `pandas` and `plotly` packages. The dataset used in the a
 ![Streamlit app](assets/streamlit.PNG)
 
 ## Plotly Dash
-Compared to streamlit, [Plotly Dash](https://plotly.com/dash/) allows for building more complex user interfaces with more flexible and advanced customization for visualization, including for example interactive graphics with crosslinking between different plots. The downside is that building apps requires more coding, but by using pre-built elements from [Dash Bootstrap Components](https://dash-bootstrap-components.opensource.faculty.ai/) the amount of code required can be quickly reduced.
+Compared to streamlit, [Plotly Dash](https://plotly.com/dash/) allows for building more complex user interfaces with more flexible and advanced customization for visualization, including for example interactive graphics with crosslinking between different plots. An example of this cross-linking is included in the demo app, where hovering over a country on the world map shows the number of cases per day for that country in the bar chart. 
+The downside is that building apps requires more coding, but by using pre-built elements from [Dash Bootstrap Components](https://dash-bootstrap-components.opensource.faculty.ai/) the amount of code required can be quickly reduced.
 
 1. Install the following 2 packages via `pip install` or `conda install`:
     1. `dash`
