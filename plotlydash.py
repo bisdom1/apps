@@ -29,7 +29,6 @@ df = df[df['total_cases'].notna()]
 navbar = dbc.Navbar(
     children=[
         html.A(
-            # Use row and col to control vertical alignment of logo / brand
             dbc.Row(
                 [
                     dbc.Col(
@@ -39,7 +38,7 @@ navbar = dbc.Navbar(
                 align="center",
                 no_gutters=True,
             ),
-            href="mailto:kevin.bisdom@shell.com",
+            href="#",
         ),
     ],
     color="dark",

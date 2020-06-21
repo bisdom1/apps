@@ -1,5 +1,5 @@
 # Python web app comparison
-Comparison of different python packages for generating web-based applications, using a basic example of data visualization with limited user interaction. 
+Comparison of different python packages (streamlit, dash, voila) for generating web-based applications, using a basic example of data visualization with limited user interaction. 
 
 ## General requirements
 Python 3.x set-up with `pandas` and `plotly` packages. The dataset used in the apps is found in assets/. 
