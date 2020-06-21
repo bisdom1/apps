@@ -4,6 +4,44 @@ Comparison of different python packages (streamlit, dash, voila) for generating 
 ## General requirements
 Python 3.x set-up with `pandas` and `plotly` packages. The dataset used in the apps is found in assets/. 
 
+## Demo
+The example application takes a `*.csv` file with COVID-19 statistics per country and creates 2 figures:
+1. The total number of cases as a function of time mapped per country.
+2. The number of new cases per day for a selected country.
+
+We turn this code into interactive apps using streamlit, dash and voila.
+
+The code:
+```python
+import pandas as pd 
+import plotly.express as px
+
+df = pd.read_csv('https://raw.githubusercontent.com/bisdom1/apps/master/assets/owid-covid-data.csv', na_values='nan') 
+df.date=pd.DatetimeIndex(df.date) # convert to date-time for bar chart plot
+df.index=df.date
+df['week'] = df.to_period('W').index.strftime("%Y-%m-%d") # convert to weekly data for time plotting
+df = df[df['continent'].notna()] # remove world data (not a valid continent)
+df = df[df['total_cases'].notna()] # remove incomplete rows
+countries = df.location.unique() # get list of available countries
+
+country = countries[0] # select the first country for plotting the bar chart
+
+# Plot world map with total number of cases in time (show per week)
+fig = px.scatter_geo(df, locations="iso_code", color="continent",
+                     hover_name="location", size="total_cases",
+                     animation_frame="week",
+                     projection="equirectangular",
+                     title='Total cases per country, coloured by continent',
+                     size_max=50,
+                     opacity=0.7,
+                     template='plotly_white')
+fig.show()
+
+# Plot number of new cases per day for selected country
+fig = px.bar(df[df.location==country], x="date", y="new_cases", title="New cases per day in " + country,template='plotly_white')
+fig.show()
+```
+
 ## Streamlit
 [Streamlit](https://www.streamlit.io/) is an app framework optimized for data science and machine learning, with powerful caching. Adding interactive user elements typically only takes 1 line of code per element.
 
